@@ -20,8 +20,8 @@ def main():
     clock = pygame.time.Clock()
     sprite = Sprite(name="protag")
 
-
     background = pygame.image.load('img_files/bg_placeholder.png')
+    text_box = pygame.image.load('img_files/ui_textbox.png')
 
     while True: 
         for event in pygame.event.get():
@@ -35,6 +35,7 @@ def main():
                     sprite = Sprite(name="protag", dir=1)
 
         screen.blit(background, (0,0))
+        screen.blit(text_box, (0,0))
         sprite.draw(screen)
 
         pygame.display.update()
