@@ -1,6 +1,12 @@
 import pygame
 from sys import exit
 
+class Sprite():
+    def __init__(self, name, dir, res):
+        self.name = name
+        self.dir = dir
+        self.res = res
+
 pygame.init()
 screen = pygame.display.set_mode((800,400))
 pygame.display.set_caption('Visual Novel')
