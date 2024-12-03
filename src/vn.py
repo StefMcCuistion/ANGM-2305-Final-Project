@@ -1,6 +1,5 @@
 import pygame
 from sys import exit
-from PIL import Image, ImageDraw
 
 class Sprite():
     def __init__(self, name, dir=1, res=(800,400)):
