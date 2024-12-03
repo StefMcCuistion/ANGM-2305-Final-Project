@@ -2,7 +2,7 @@ import pygame
 from sys import exit
 
 class Sprite():
-    def __init__(self, name, dir=0, res=(800,400)):
+    def __init__(self, name, dir=1, res=(800,400)):
         self.name = name
         self.dir = dir
         self.res = res
@@ -28,6 +28,8 @@ def main():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 exit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                sprite = Sprite(name="protag", dir=0)
 
         screen.blit(background, (0,0))
         sprite.draw(screen)
