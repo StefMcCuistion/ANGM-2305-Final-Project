@@ -17,7 +17,8 @@ def main():
     pygame.display.set_caption('Visual Novel')
     clock = pygame.time.Clock()
 
-    background = pygame.image.load('img_files/bg.png')
+
+    background = pygame.image.load('img_files/bg_placeholder.png')
 
     while True: 
         for event in pygame.event.get():
