@@ -2,13 +2,15 @@ import pygame
 from sys import exit
 
 class Sprite():
-    def __init__(self, name, dir=1, res=(800,400)):
+    def __init__(self, name, dir=0, res=(800,400)):
         self.name = name
         self.dir = dir
         self.res = res
 
     def draw(self, screen):
         surf = pygame.image.load(f"img_files/spr_{self.name}.png")
+        if self.dir == 0:
+            pygame.transform.flip(surf, 0, 1)
         screen.blit(surf, (0,0))
 
 def main():
