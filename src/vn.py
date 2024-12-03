@@ -21,7 +21,7 @@ def main():
     pygame.display.set_caption('Visual Novel')
     clock = pygame.time.Clock()
     sprite = Sprite(name="protag")
-    font = pygame.font.SysFont('Comic Sans MS', 30)
+    font = pygame.font.SysFont('Comic Sans MS', 18)
 
     background = pygame.image.load('img_files/bg_placeholder.png')
     txt_box = pygame.image.load('img_files/ui_textbox.png')
@@ -41,7 +41,7 @@ def main():
         screen.blit(background, (0,0))
         sprite.draw(screen)
         screen.blit(txt_box, (0,0))
-        screen.blit(txt_surface, (30, 250))
+        screen.blit(txt_surface, (30, 240))
 
         pygame.display.update()
         clock.tick(60)
