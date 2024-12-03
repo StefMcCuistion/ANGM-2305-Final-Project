@@ -35,8 +35,8 @@ def main():
                     sprite = Sprite(name="protag", dir=1)
 
         screen.blit(background, (0,0))
-        screen.blit(text_box, (0,0))
         sprite.draw(screen)
+        screen.blit(text_box, (0,0))
 
         pygame.display.update()
         clock.tick(60)
