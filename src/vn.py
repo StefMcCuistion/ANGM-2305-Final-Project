@@ -29,7 +29,10 @@ def main():
                 pygame.quit()
                 exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
-                sprite = Sprite(name="protag", dir=0)
+                if sprite.dir==1:
+                    sprite = Sprite(name="protag", dir=0)
+                else:
+                    sprite = Sprite(name="protag", dir=1)
 
         screen.blit(background, (0,0))
         sprite.draw(screen)
