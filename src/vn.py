@@ -10,7 +10,7 @@ class Sprite():
     def draw(self, screen):
         surf = pygame.image.load(f"img_files/spr_{self.name}.png")
         if self.dir == 0:
-            pygame.transform.flip(surf, 0, 1)
+            surf = pygame.transform.flip(surf, 1, 0)
         screen.blit(surf, (0,0))
 
 def main():
