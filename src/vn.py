@@ -1,5 +1,6 @@
 import pygame
 from sys import exit
+from PIL import Image, ImageDraw
 
 class Sprite():
     def __init__(self, name, dir=1, res=(800,400)):
@@ -15,13 +16,16 @@ class Sprite():
 
 def main():
     pygame.init()
+    pygame.font.init()
     screen = pygame.display.set_mode((800,400))
     pygame.display.set_caption('Visual Novel')
     clock = pygame.time.Clock()
     sprite = Sprite(name="protag")
+    font = pygame.font.SysFont('Comic Sans MS', 30)
 
     background = pygame.image.load('img_files/bg_placeholder.png')
-    text_box = pygame.image.load('img_files/ui_textbox.png')
+    txt_box = pygame.image.load('img_files/ui_textbox.png')
+    txt_surface = font.render('Lorum Ipsum', False, (255, 255, 255))
 
     while True: 
         for event in pygame.event.get():
@@ -36,7 +40,8 @@ def main():
 
         screen.blit(background, (0,0))
         sprite.draw(screen)
-        screen.blit(text_box, (0,0))
+        screen.blit(txt_box, (0,0))
+        screen.blit(txt_surface, (30, 250))
 
         pygame.display.update()
         clock.tick(60)
