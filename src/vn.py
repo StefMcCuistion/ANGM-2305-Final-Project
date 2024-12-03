@@ -30,7 +30,7 @@ def main():
                 exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if sprite.dir==1:
-                    sprite = Sprite(name="protag", dir=0)
+                    sprite = Sprite(name="altchara", dir=0)
                 else:
                     sprite = Sprite(name="protag", dir=1)
 
