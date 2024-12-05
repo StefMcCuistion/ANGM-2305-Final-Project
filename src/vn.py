@@ -20,6 +20,8 @@ class Sprite():
         screen.blit(surf, (0,0))
 
 def main():
+    # Initialization and setup. 
+
     pygame.init()
     pygame.font.init()
     screen = pygame.display.set_mode((800,400))
@@ -35,16 +37,26 @@ def main():
     txt_line1 = font.render(txt[0], False, (255, 255, 255))
     txt_line2 = font.render(txt[1], False, (255, 255, 255))
 
+    # The main game loop. 
     while True: 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
+                # This will eventually progress dialogue. 
+                # For now, it swaps between protagonist and alt character. 
                 if sprite.dir==1:
                     sprite = Sprite(name="altchara", dir=0)
                 else:
                     sprite = Sprite(name="protag", dir=1)
+
+        #TODO: Add main menu
+        #TODO: Add external text document to grab dialogue from
+        #TODO: Make code display arbitrary text with arbitrary number of 'pages'
+        #TODO: Add settings menu
+        #TODO: Add audio
+        #TODO: Add end screen
 
         screen.blit(background, (0,0))
         sprite.draw(screen)
