@@ -3,11 +3,17 @@ from sys import exit
 
 class Sprite():
     def __init__(self, name, dir=1, res=(800,400)):
-        self.name = name
-        self.dir = dir
-        self.res = res
+        self.name = name # name of the character protrayed in the sprite
+        self.dir = dir # determines whether sprite faces left or right, 1 = right, 0 = left
+        self.res = res # determines what resolution the sprite displays at
 
     def draw(self, screen):
+        """
+        Draws character sprite on screen. 
+
+        :param screen: The 'screen' surface that other surfaces are blitted onto. 
+        :type screen: Surface
+        """
         surf = pygame.image.load(f"img_files/spr_{self.name}.png")
         if self.dir == 0:
             surf = pygame.transform.flip(surf, 1, 0)
