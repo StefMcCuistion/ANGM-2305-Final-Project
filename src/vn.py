@@ -22,7 +22,7 @@ class Sprite():
             surf = pygame.transform.flip(surf, 1, 0)
         screen.blit(surf, (0,0))
 
-def display_dialogue(screen, txt, font):
+def display_dialogue(screen, txt, font, res):
     """
     Displays text in dialogue box. 
 
@@ -41,11 +41,11 @@ def display_dialogue(screen, txt, font):
     line3 = font.render(txt[2], False, (255, 255, 255))
     line4 = font.render(txt[3], False, (255, 255, 255))
     line5 = font.render(txt[4], False, (255, 255, 255))
-    screen.blit(line1, (30, 240))
-    screen.blit(line2, (30, 270))
-    screen.blit(line3, (30, 300))
-    screen.blit(line4, (30, 330))
-    screen.blit(line5, (30, 360))
+    screen.blit(line1, (0.0375*res[0], 0.6*res[1]))
+    screen.blit(line2, (0.0375*res[0], 0.675*res[1]))
+    screen.blit(line3, (0.0375*res[0], 0.75*res[1]))
+    screen.blit(line4, (0.0375*res[0], 0.825*res[1]))
+    screen.blit(line5, (0.0375*res[0], 0.9*res[1]))
 
 def update_page(page, sprite):
     print(f"The current page is {page}!") #debug
@@ -124,7 +124,7 @@ def main():
         screen.blit(background, (0,0))
         sprite.draw(screen, res)
         screen.blit(txt_box, (0,0))
-        display_dialogue(screen, dialogue_pages[page-1], font)
+        display_dialogue(screen, dialogue_pages[page-1], font, res)
 
         pygame.display.update()
         clock.tick(60)
