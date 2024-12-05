@@ -19,12 +19,26 @@ class Sprite():
             surf = pygame.transform.flip(surf, 1, 0)
         screen.blit(surf, (0,0))
 
+def display_dialogue(screen, txt, font):
+    txt = txt.split('\n')
+    line1 = font.render(txt[0], False, (255, 255, 255))
+    line2 = font.render(txt[1], False, (255, 255, 255))
+    line3 = font.render(txt[2], False, (255, 255, 255))
+    line4 = font.render(txt[3], False, (255, 255, 255))
+    line5 = font.render(txt[4], False, (255, 255, 255))
+    screen.blit(line1, (30, 240))
+    screen.blit(line2, (30, 270))
+    screen.blit(line3, (30, 300))
+    screen.blit(line4, (30, 330))
+    screen.blit(line5, (30, 360))
+
+
 def main():
     # Initialization and setup. 
 
     pygame.init()
     pygame.font.init()
-    screen = pygame.display.set_mode((800,400))
+    screen = pygame.display.set_mode((800, 400))
     pygame.display.set_caption('Visual Novel')
     clock = pygame.time.Clock()
     sprite = Sprite(name="protag")
@@ -34,18 +48,6 @@ def main():
     txt_box = pygame.image.load('img_files/ui_textbox.png')
     txt = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt \nut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation \nullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in \nreprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. \nExcepteur \nsint occaecat \ncupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
 
-    def display_dialogue(screen, txt):
-        txt = txt.split('\n')
-        line1 = font.render(txt[0], False, (255, 255, 255))
-        line2 = font.render(txt[1], False, (255, 255, 255))
-        line3 = font.render(txt[2], False, (255, 255, 255))
-        line4 = font.render(txt[3], False, (255, 255, 255))
-        line5 = font.render(txt[4], False, (255, 255, 255))
-        screen.blit(line1, (30, 240))
-        screen.blit(line2, (30, 270))
-        screen.blit(line3, (30, 300))
-        screen.blit(line4, (30, 330))
-        screen.blit(line5, (30, 360))
 
     # The main game loop. 
     while True: 
@@ -71,7 +73,7 @@ def main():
         screen.blit(background, (0,0))
         sprite.draw(screen)
         screen.blit(txt_box, (0,0))
-        display_dialogue(screen, txt)
+        display_dialogue(screen, txt, font)
 
         pygame.display.update()
         clock.tick(60)
