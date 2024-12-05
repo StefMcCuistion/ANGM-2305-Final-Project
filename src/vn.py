@@ -32,10 +32,16 @@ def main():
 
     background = pygame.image.load('img_files/bg_placeholder.png')
     txt_box = pygame.image.load('img_files/ui_textbox.png')
-    txt = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt \nut labore et dolore magna aliqua. Ut enim ad minim veniam, \nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+    txt = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt \nut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation \nullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in \nreprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
     txt = txt.split('\n')
     txt_line1 = font.render(txt[0], False, (255, 255, 255))
     txt_line2 = font.render(txt[1], False, (255, 255, 255))
+    txt_line3 = font.render(txt[2], False, (255, 255, 255))
+
+    def display_dialogue(screen, line1, line2, line3):
+        screen.blit(line1, (30, 240))
+        screen.blit(line2, (30, 270))
+        screen.blit(line3, (30, 300))
 
     # The main game loop. 
     while True: 
@@ -61,11 +67,11 @@ def main():
         screen.blit(background, (0,0))
         sprite.draw(screen)
         screen.blit(txt_box, (0,0))
-        screen.blit(txt_line1, (30, 240))
-        screen.blit(txt_line2, (30, 270))
+        display_dialogue(screen, txt_line1, txt_line2, txt_line3)
 
         pygame.display.update()
         clock.tick(60)
+
 
 if __name__ == "__main__":
     main()
