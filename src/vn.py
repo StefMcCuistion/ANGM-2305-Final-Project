@@ -73,7 +73,7 @@ def main():
     sprite = Sprite(name="altchara")
     font = pygame.font.SysFont('Comic Sans MS', 18)
     page = 1
-    time = 'day'
+    time = 'night'
     print(f"The current page is {page}!") #debug
 
     background = pygame.image.load(f'img_files/bg_{time}_{res[0]}x{res[1]}.png')
@@ -109,6 +109,7 @@ def main():
                         res = (800, 400)
                     print(f"res={res}")
                     screen = pygame.display.set_mode(res)
+                    background = update_background(background, time, res)
         #TODO: Add main menu
         #TODO: Add unique sprites for each page
         #TODO: Add settings menu
