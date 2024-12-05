@@ -75,7 +75,7 @@ def main():
     pygame.display.set_caption('Visual Novel')
     clock = pygame.time.Clock()
     sprite = Sprite(name="altchara")
-    font = pygame.font.SysFont('Comic Sans MS', 18)
+    font = pygame.font.SysFont('Comic Sans MS', int(0.0225*res[0]))
     page = 1
     time = 'night'
     print(f"The current page is {page}!") #debug
@@ -112,6 +112,7 @@ def main():
                     elif res == (1040, 520):
                         res = (800, 400)
                     print(f"res={res}")
+                    font = pygame.font.SysFont('Comic Sans MS', int(0.0225*res[0]))
                     screen = pygame.display.set_mode(res)
                     background = update_background(background, time, res)
                     txt_box = update_txtbox(txt_box, res)
