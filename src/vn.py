@@ -91,6 +91,7 @@ def main():
                     page += 1
                     sprite = update_page(page, sprite)
         #TODO: Add main menu
+        #TODO: Add unique sprites for each page
         #TODO: Add settings menu
         #TODO: Add audio
         #TODO: Add end screen
