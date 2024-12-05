@@ -55,11 +55,13 @@ def main():
     background = pygame.image.load('img_files/bg_placeholder.png')
     txt_box = pygame.image.load('img_files/ui_textbox.png')
 
+
     with open('dialogue.csv') as file:
         dialogue_pages = []
         for line in file:
             dialogue_pages.append(line)
-            print(dialogue_pages) #debug
+
+    active_dialogue = dialogue_pages[0]
 
     # The main game loop. 
     while True: 
@@ -69,6 +71,7 @@ def main():
                 exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 advance_page(page)
+                active_dialogue = dialogue_pages[page-1]
         #TODO: Add main menu
         #TODO: Make code display arbitrary text with arbitrary number of 'pages'
         #TODO: Add settings menu
@@ -78,7 +81,7 @@ def main():
         screen.blit(background, (0,0))
         sprite.draw(screen)
         screen.blit(txt_box, (0,0))
-        display_dialogue(screen, dialogue_pages[0], font)
+        display_dialogue(screen, active_dialogue, font)
 
         pygame.display.update()
         clock.tick(60)
