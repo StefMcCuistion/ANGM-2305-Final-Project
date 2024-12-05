@@ -33,12 +33,12 @@ def display_dialogue(screen, txt, font):
     screen.blit(line5, (30, 360))
 
 def update_page(page, sprite):
-    page = page + 1
     print(f"The current page is {page}!") #debug
     if sprite.dir==1:
         sprite = Sprite(name="altchara", dir=0)
     else:
         sprite = Sprite(name="protag", dir=1)
+    return sprite
 
 
 def main():
@@ -71,8 +71,10 @@ def main():
                 pygame.quit()
                 exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
-                page += 1
-                update_page(page, sprite)
+                pagecount = len(dialogue_pages)
+                if page < pagecount:
+                    page += 1
+                    sprite = update_page(page, sprite)
         #TODO: Add main menu
         #TODO: Make code display arbitrary text with arbitrary number of 'pages'
         #TODO: Add settings menu
