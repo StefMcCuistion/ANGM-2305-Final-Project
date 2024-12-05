@@ -72,9 +72,10 @@ def main():
     sprite = Sprite(name="protag")
     font = pygame.font.SysFont('Comic Sans MS', 18)
     page = 1
+    time = 'day'
     print(f"The current page is {page}!") #debug
 
-    background = pygame.image.load(f'img_files/bg_day_{res[0]}x{res[1]}.png')
+    background = pygame.image.load(f'img_files/bg_{time}_{res[0]}x{res[1]}.png')
     txt_box = pygame.image.load('img_files/ui_textbox.png')
 
 
