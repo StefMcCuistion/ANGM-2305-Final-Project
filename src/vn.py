@@ -77,7 +77,7 @@ def main():
         screen.blit(background, (0,0))
         sprite.draw(screen)
         screen.blit(txt_box, (0,0))
-        display_dialogue(screen, pages[0], font)
+        display_dialogue(screen, pages[2], font)
 
         pygame.display.update()
         clock.tick(60)
