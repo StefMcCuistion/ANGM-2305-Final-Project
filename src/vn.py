@@ -59,6 +59,10 @@ def update_background(background, time, res):
     background = pygame.image.load(f'img_files/bg_{time}_{res[0]}x{res[1]}.png')
     return background
 
+def update_txtbox(txt_box, res):
+    txt_box = pygame.image.load(f'img_files/ui_textbox_{res[0]}x{res[1]}.png')
+    return txt_box
+
 
 
 def main():
@@ -77,7 +81,7 @@ def main():
     print(f"The current page is {page}!") #debug
 
     background = pygame.image.load(f'img_files/bg_{time}_{res[0]}x{res[1]}.png')
-    txt_box = pygame.image.load('img_files/ui_textbox.png')
+    txt_box = pygame.image.load(f'img_files/ui_textbox_{res[0]}x{res[1]}.png')
 
 
     with open('dialogue.csv') as file:
@@ -110,6 +114,7 @@ def main():
                     print(f"res={res}")
                     screen = pygame.display.set_mode(res)
                     background = update_background(background, time, res)
+                    txt_box = update_txtbox(txt_box, res)
         #TODO: Add main menu
         #TODO: Add unique sprites for each page
         #TODO: Add settings menu
