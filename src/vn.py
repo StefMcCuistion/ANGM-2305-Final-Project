@@ -55,6 +55,10 @@ def update_page(page, sprite):
         sprite = Sprite(dir=1)
     return sprite
 
+def update_background(page, background, scene_pages):
+    return background
+
+
 
 def main():
     # Initialization and setup. 
@@ -94,6 +98,7 @@ def main():
                 if page < pagecount:
                     page += 1
                     sprite = update_page(page, sprite)
+                    background = update_background(page, background, scene_pages)
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_f:
                     if res == (800, 400):
