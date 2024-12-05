@@ -55,7 +55,8 @@ def update_page(page, sprite):
         sprite = Sprite(dir=1)
     return sprite
 
-def update_background(page, background, scene_pages):
+def update_background(background, time, res):
+    background = pygame.image.load(f'img_files/bg_{time}_{res[0]}x{res[1]}.png')
     return background
 
 
@@ -99,7 +100,7 @@ def main():
                 if page < pagecount:
                     page += 1
                     sprite = update_page(page, sprite)
-                    background = update_background(page, background, scene_pages)
+                    background = update_background(background, time, res)
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_f:
                     if res == (800, 400):
