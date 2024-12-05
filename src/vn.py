@@ -2,7 +2,7 @@ import pygame
 from sys import exit
 
 class Sprite():
-    def __init__(self, name, dir=1, res=(800,400)):
+    def __init__(self, name="protag", dir=1, res=(800,400)):
         self.name = name # name of the character protrayed in the sprite
         self.dir = dir # determines whether sprite faces left or right, 1 = right, 0 = left
         self.res = res # determines what resolution the sprite displays at
@@ -50,9 +50,9 @@ def display_dialogue(screen, txt, font):
 def update_page(page, sprite):
     print(f"The current page is {page}!") #debug
     if sprite.dir==1:
-        sprite = Sprite(name="altchara", dir=0)
+        sprite = Sprite(dir=0)
     else:
-        sprite = Sprite(name="protag", dir=1)
+        sprite = Sprite(dir=1)
     return sprite
 
 
