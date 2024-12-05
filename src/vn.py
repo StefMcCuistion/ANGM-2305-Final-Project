@@ -68,7 +68,6 @@ def main():
                     sprite = Sprite(name="protag", dir=1)
 
         #TODO: Add main menu
-        #TODO: Add external text document to grab dialogue from
         #TODO: Make code display arbitrary text with arbitrary number of 'pages'
         #TODO: Add settings menu
         #TODO: Add audio
@@ -77,7 +76,7 @@ def main():
         screen.blit(background, (0,0))
         sprite.draw(screen)
         screen.blit(txt_box, (0,0))
-        display_dialogue(screen, pages[2], font)
+        display_dialogue(screen, pages[0], font)
 
         pygame.display.update()
         clock.tick(60)
