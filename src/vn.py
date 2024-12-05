@@ -20,12 +20,9 @@ class Sprite():
         screen.blit(surf, (0,0))
 
 def display_dialogue(screen, txt, font):
-    print(f"txt={txt}") #debug
-    txt = txt.split('\n')
+    txt = txt.split('\\n')
     line1 = font.render(txt[0], False, (255, 255, 255))
-    print(f"line1={line1}") #debug
     line2 = font.render(txt[1], False, (255, 255, 255))
-    print(f"line2={line2}") #debug
     line3 = font.render(txt[2], False, (255, 255, 255))
     line4 = font.render(txt[3], False, (255, 255, 255))
     line5 = font.render(txt[4], False, (255, 255, 255))
@@ -54,6 +51,7 @@ def main():
         pages = []
         for line in file:
             pages.append(line)
+            print(pages) #debug
 
     # The main game loop. 
     while True: 
@@ -79,7 +77,6 @@ def main():
         screen.blit(background, (0,0))
         sprite.draw(screen)
         screen.blit(txt_box, (0,0))
-        print(f"The first item of the list 'pages' is {pages[0]}") #debug
         display_dialogue(screen, pages[0], font)
 
         pygame.display.update()
