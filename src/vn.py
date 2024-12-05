@@ -32,6 +32,12 @@ def display_dialogue(screen, txt, font):
     screen.blit(line4, (30, 330))
     screen.blit(line5, (30, 360))
 
+def advance_page():
+    if sprite.dir==1:
+        sprite = Sprite(name="altchara", dir=0)
+    else:
+        sprite = Sprite(name="protag", dir=1)
+
 
 def main():
     # Initialization and setup. 
@@ -60,13 +66,7 @@ def main():
                 pygame.quit()
                 exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
-                # This will eventually progress dialogue. 
-                # For now, it swaps between protagonist and alt character. 
-                if sprite.dir==1:
-                    sprite = Sprite(name="altchara", dir=0)
-                else:
-                    sprite = Sprite(name="protag", dir=1)
-
+                advance_page()
         #TODO: Add main menu
         #TODO: Make code display arbitrary text with arbitrary number of 'pages'
         #TODO: Add settings menu
