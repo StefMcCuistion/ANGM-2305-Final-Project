@@ -32,16 +32,20 @@ def main():
 
     background = pygame.image.load('img_files/bg_placeholder.png')
     txt_box = pygame.image.load('img_files/ui_textbox.png')
-    txt = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt \nut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation \nullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in \nreprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+    txt = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt \nut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation \nullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in \nreprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. \nExcepteur \nsint occaecat \ncupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
 
     def display_dialogue(screen, txt):
         txt = txt.split('\n')
         line1 = font.render(txt[0], False, (255, 255, 255))
         line2 = font.render(txt[1], False, (255, 255, 255))
         line3 = font.render(txt[2], False, (255, 255, 255))
+        line4 = font.render(txt[3], False, (255, 255, 255))
+        line5 = font.render(txt[4], False, (255, 255, 255))
         screen.blit(line1, (30, 240))
         screen.blit(line2, (30, 270))
         screen.blit(line3, (30, 300))
+        screen.blit(line4, (30, 330))
+        screen.blit(line5, (30, 360))
 
     # The main game loop. 
     while True: 
