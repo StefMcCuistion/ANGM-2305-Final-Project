@@ -52,7 +52,7 @@ def update_page(page, sprite):
     if sprite.dir==1:
         sprite = Sprite(dir=0)
     else:
-        sprite = Sprite(dir=1)
+        sprite = Sprite(name="altchara", dir=1)
     return sprite
 
 def update_background(background, time, res):
@@ -70,7 +70,7 @@ def main():
     screen = pygame.display.set_mode(res)
     pygame.display.set_caption('Visual Novel')
     clock = pygame.time.Clock()
-    sprite = Sprite(name="protag")
+    sprite = Sprite(name="altchara")
     font = pygame.font.SysFont('Comic Sans MS', 18)
     page = 1
     time = 'day'
