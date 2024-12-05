@@ -74,7 +74,7 @@ def main():
     page = 1
     print(f"The current page is {page}!") #debug
 
-    background = pygame.image.load('img_files/bg_placeholder.png')
+    background = pygame.image.load(f'img_files/bg_day_{res[0]}x{res[1]}.png')
     txt_box = pygame.image.load('img_files/ui_textbox.png')
 
 
