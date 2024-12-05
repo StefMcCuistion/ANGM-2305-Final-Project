@@ -13,6 +13,9 @@ class Sprite():
 
         :param screen: The 'screen' surface that other surfaces are blitted onto. 
         :type screen: Surface
+
+        :return: None. 
+        :rtype: None. 
         """
         surf = pygame.image.load(f"img_files/spr_{self.name}.png")
         if self.dir == 0:
@@ -20,6 +23,18 @@ class Sprite():
         screen.blit(surf, (0,0))
 
 def display_dialogue(screen, txt, font):
+    """
+    Displays text in dialogue box. 
+
+    :param txt: The text that will be displayed. 
+    :type txt: str
+
+    :param font: The font that the text will be displayed in. 
+    :type font: font
+
+    :return: None. 
+    :rtype: None. 
+    """
     txt = txt.split('\\n')
     line1 = font.render(txt[0], False, (255, 255, 255))
     line2 = font.render(txt[1], False, (255, 255, 255))
