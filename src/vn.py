@@ -32,7 +32,7 @@ def display_dialogue(screen, txt, font):
     screen.blit(line4, (30, 330))
     screen.blit(line5, (30, 360))
 
-def advance_page(page):
+def advance_page(page, sprite):
     page += 1
     if sprite.dir==1:
         sprite = Sprite(name="altchara", dir=0)
@@ -70,7 +70,7 @@ def main():
                 pygame.quit()
                 exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
-                advance_page(page)
+                advance_page(page, sprite)
                 active_dialogue = dialogue_pages[page-1]
         #TODO: Add main menu
         #TODO: Make code display arbitrary text with arbitrary number of 'pages'
