@@ -7,7 +7,7 @@ class Sprite():
         self.dir = dir # determines whether sprite faces left or right, 1 = right, 0 = left
         self.res = res # determines what resolution the sprite displays at
 
-    def draw(self, screen):
+    def draw(self, screen, res):
         """
         Draws character sprite on screen. 
 
@@ -17,7 +17,7 @@ class Sprite():
         :return: None. 
         :rtype: None. 
         """
-        surf = pygame.image.load(f"img_files/spr_{self.name}.png")
+        surf = pygame.image.load(f"img_files/spr_{self.name}_{res[0]}x{res[1]}.png")
         if self.dir == 0:
             surf = pygame.transform.flip(surf, 1, 0)
         screen.blit(surf, (0,0))
@@ -61,7 +61,8 @@ def main():
 
     pygame.init()
     pygame.font.init()
-    screen = pygame.display.set_mode((800, 400))
+    res = (800, 400)
+    screen = pygame.display.set_mode(res)
     pygame.display.set_caption('Visual Novel')
     clock = pygame.time.Clock()
     sprite = Sprite(name="protag")
@@ -93,6 +94,14 @@ def main():
                 if page < pagecount:
                     page += 1
                     sprite = update_page(page, sprite)
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_f:
+                    if res == (800, 400):
+                        res = (1040, 520)
+                    elif res == (1040, 520):
+                        res = (800, 400)
+                    print(f"res={res}")
+                    screen = pygame.display.set_mode(res)
         #TODO: Add main menu
         #TODO: Add unique sprites for each page
         #TODO: Add settings menu
@@ -100,7 +109,7 @@ def main():
         #TODO: Add end screen
 
         screen.blit(background, (0,0))
-        sprite.draw(screen)
+        sprite.draw(screen, res)
         screen.blit(txt_box, (0,0))
         display_dialogue(screen, dialogue_pages[page-1], font)
 
