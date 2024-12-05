@@ -91,7 +91,6 @@ def main():
                     page += 1
                     sprite = update_page(page, sprite)
         #TODO: Add main menu
-        #TODO: Make code display arbitrary text with arbitrary number of 'pages'
         #TODO: Add settings menu
         #TODO: Add audio
         #TODO: Add end screen
