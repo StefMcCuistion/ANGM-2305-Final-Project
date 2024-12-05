@@ -75,9 +75,11 @@ def main():
 
     with open('dialogue.csv') as file:
         dialogue_pages = []
+        scene_pages = []
         for line in file:
             scene, dialogue = line.rstrip().split('*')
             dialogue_pages.append(dialogue)
+            scene_pages.append(scene)
 
 
     # The main game loop. 
