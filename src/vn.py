@@ -46,8 +46,11 @@ def main():
 
     background = pygame.image.load('img_files/bg_placeholder.png')
     txt_box = pygame.image.load('img_files/ui_textbox.png')
-    txt = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt \nut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation \nullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in \nreprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. \nExcepteur \nsint occaecat \ncupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
 
+    with open('dialogue.csv') as file:
+        pages = []
+        for line in file:
+            pages.append(line)
 
     # The main game loop. 
     while True: 
@@ -73,7 +76,7 @@ def main():
         screen.blit(background, (0,0))
         sprite.draw(screen)
         screen.blit(txt_box, (0,0))
-        display_dialogue(screen, txt, font)
+        display_dialogue(screen, pages[0], font)
 
         pygame.display.update()
         clock.tick(60)
