@@ -32,8 +32,9 @@ def display_dialogue(screen, txt, font):
     screen.blit(line4, (30, 330))
     screen.blit(line5, (30, 360))
 
-def advance_page(page, sprite):
-    page += 1
+def update_page(page, sprite):
+    page = page + 1
+    print(f"The current page is {page}!") #debug
     if sprite.dir==1:
         sprite = Sprite(name="altchara", dir=0)
     else:
@@ -51,6 +52,7 @@ def main():
     sprite = Sprite(name="protag")
     font = pygame.font.SysFont('Comic Sans MS', 18)
     page = 1
+    print(f"The current page is {page}!") #debug
 
     background = pygame.image.load('img_files/bg_placeholder.png')
     txt_box = pygame.image.load('img_files/ui_textbox.png')
@@ -61,7 +63,6 @@ def main():
         for line in file:
             dialogue_pages.append(line)
 
-    active_dialogue = dialogue_pages[0]
 
     # The main game loop. 
     while True: 
@@ -70,8 +71,8 @@ def main():
                 pygame.quit()
                 exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
-                advance_page(page, sprite)
-                active_dialogue = dialogue_pages[page-1]
+                page += 1
+                update_page(page, sprite)
         #TODO: Add main menu
         #TODO: Make code display arbitrary text with arbitrary number of 'pages'
         #TODO: Add settings menu
@@ -81,7 +82,7 @@ def main():
         screen.blit(background, (0,0))
         sprite.draw(screen)
         screen.blit(txt_box, (0,0))
-        display_dialogue(screen, active_dialogue, font)
+        display_dialogue(screen, dialogue_pages[page-1], font)
 
         pygame.display.update()
         clock.tick(60)
