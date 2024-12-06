@@ -23,11 +23,28 @@ class Sprite():
         screen.blit(surf, (0,0))
 
 class Button():
-    def __init__(self, name, img, x, y):
+    def __init__(self, name, img, x, y, res = (1040, 820)):
         self.name = name
         self.img = img
         self.x = x
         self.y = y
+        self.res = res
+        self.rect = self.img.get_rect(center=(self.x, self.y))
+
+    def update(self, screen):
+        screen.blit(self.img, self.rect)
+
+    def check_for_input(self, pos):
+        if pos[0] in range(self.rect.left, self.rect.right) and pos[1] in range(self.rect.top, self.rect.bottom):
+            return 1
+        else:
+            return 0
+
+    def change_appearance(self, pos, res):
+        if pos[0] in range(self.rect.left, self.rect.right) and pos[1] in range(self.rect.top, self.rect.bottom):
+            self.img = pygame.image.load(f"img_files/ui_{self.name}_selected_{res[0]}x{res[1]}.png")
+        else:
+            self.img = pygame.image.load(f"img_files/ui_{self.name}_unselected_{res[0]}x{res[1]}.png")
 
 
 def display_dialogue(screen, txt, font, res):
