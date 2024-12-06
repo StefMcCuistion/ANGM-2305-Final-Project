@@ -117,6 +117,20 @@ def play():
         pygame.display.update()
         clock.tick(60)
 
+def main_menu():
+    res = (800, 400)
+    screen = pygame.display.set_mode(res)
+    pygame.display.set_caption('Visual Novel')
+    clock = pygame.time.Clock()
+
+
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                exit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                play()
 
 
 def main():
@@ -130,7 +144,7 @@ def main():
         #TODO: Add audio
         #TODO: Add end screen
 
-    play()
+    main_menu()
 
 
 if __name__ == "__main__":
