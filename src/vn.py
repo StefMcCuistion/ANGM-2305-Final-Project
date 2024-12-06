@@ -23,6 +23,11 @@ class Sprite():
         screen.blit(surf, (0,0))
 
 class Button():
+    def __init__(self, name, img, x, y):
+        self.name = name
+        self.img = img
+        self.x = x
+        self.y = y
 
 
 def display_dialogue(screen, txt, font, res):
@@ -66,8 +71,7 @@ def update_txtbox(txt_box, res):
     txt_box = pygame.image.load(f'img_files/ui_textbox_{res[0]}x{res[1]}.png')
     return txt_box
 
-def play():
-    res = (800, 400)
+def play(res):
     screen = pygame.display.set_mode(res)
     pygame.display.set_caption('Visual Novel')
     clock = pygame.time.Clock()
@@ -121,7 +125,7 @@ def play():
         clock.tick(60)
 
 def main_menu():
-    res = (800, 400)
+    res = (1040, 520)
     screen = pygame.display.set_mode(res)
     pygame.display.set_caption('Visual Novel')
     clock = pygame.time.Clock()
@@ -133,7 +137,7 @@ def main_menu():
                 pygame.quit()
                 exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
-                play()
+                play(res)
 
         pygame.display.update()
         clock.tick(60)
