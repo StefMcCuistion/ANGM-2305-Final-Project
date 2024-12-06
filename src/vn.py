@@ -23,12 +23,12 @@ class Sprite():
         screen.blit(surf, (0,0))
 
 class Button():
-    def __init__(self, name, img, x, y, res = (1040, 820)):
+    def __init__(self, name, img, x, y, resolution = (1040, 820)):
         self.name = name
         self.img = img
         self.x = x
         self.y = y
-        self.res = res
+        self.res = resolution
         self.rect = self.img.get_rect(center=(self.x, self.y))
 
     def update(self, screen):
@@ -147,6 +147,10 @@ def main_menu():
     pygame.display.set_caption('Visual Novel')
     clock = pygame.time.Clock()
 
+    start_button_surface = pygame.image.load(f"img_files/ui_start_unselected_{res[0]}x{res[1]}.png")
+
+    start_button = Button(name="start", img=start_button_surface, x=(res[0]*0.4), y=(res[1]*0.3), resolution=(1040,820))
+
 
     while True:
         for event in pygame.event.get():
@@ -154,7 +158,12 @@ def main_menu():
                 pygame.quit()
                 exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
-                play(res)
+                progress = start_button.check_for_input(pygame.mouse.get_pos())
+                if progress:
+                    play()
+        
+        start_button.update(screen)
+        start_button.change_appearance(pygame.mouse.get_pos(), res)
 
         pygame.display.update()
         clock.tick(60)
