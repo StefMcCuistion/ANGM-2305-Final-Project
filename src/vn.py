@@ -22,6 +22,9 @@ class Sprite():
             surf = pygame.transform.flip(surf, 1, 0)
         screen.blit(surf, (0,0))
 
+class Button():
+    
+
 def display_dialogue(screen, txt, font, res):
     """
     Displays text in dialogue box. 
