@@ -63,13 +63,7 @@ def update_txtbox(txt_box, res):
     txt_box = pygame.image.load(f'img_files/ui_textbox_{res[0]}x{res[1]}.png')
     return txt_box
 
-
-
-def main():
-    # Initialization and setup. 
-
-    pygame.init()
-    pygame.font.init()
+def play():
     res = (800, 400)
     screen = pygame.display.set_mode(res)
     pygame.display.set_caption('Visual Novel')
@@ -112,16 +106,9 @@ def main():
                     elif res == (1040, 520):
                         res = (800, 400)
                     print(f"res={res}")
-                    font = pygame.font.SysFont('Comic Sans MS', int(0.0225*res[0]))
                     screen = pygame.display.set_mode(res)
                     background = update_background(background, time, res)
                     txt_box = update_txtbox(txt_box, res)
-        #TODO: Add main menu
-        #TODO: Add unique sprites for each page
-        #TODO: Add settings menu
-        #TODO: Add audio
-        #TODO: Add end screen
-
         screen.blit(background, (0,0))
         sprite.draw(screen, res)
         screen.blit(txt_box, (0,0))
@@ -129,6 +116,21 @@ def main():
 
         pygame.display.update()
         clock.tick(60)
+
+
+
+def main():
+    # Initialization and setup. 
+    pygame.init()
+    pygame.font.init()
+
+        #TODO: Add main menu
+        #TODO: Add unique sprites for each page
+        #TODO: Add settings menu
+        #TODO: Add audio
+        #TODO: Add end screen
+
+    play()
 
 
 if __name__ == "__main__":
