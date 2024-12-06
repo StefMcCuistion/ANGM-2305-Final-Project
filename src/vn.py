@@ -149,7 +149,7 @@ def main_menu():
 
     start_button_surface = pygame.image.load(f"img_files/ui_start_unselected_{res[0]}x{res[1]}.png")
 
-    start_button = Button(name="start", img=start_button_surface, x=(res[0]*0.4), y=(res[1]*0.3), resolution=(1040,820))
+    start_button = Button(name="start", img=start_button_surface, x=(res[0]*0.5), y=(res[1]*0.4), resolution=(1040,820))
 
 
     while True:
