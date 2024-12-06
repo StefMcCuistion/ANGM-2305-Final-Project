@@ -23,7 +23,7 @@ class Sprite():
         screen.blit(surf, (0,0))
 
 class Button():
-    
+
 
 def display_dialogue(screen, txt, font, res):
     """
@@ -134,6 +134,10 @@ def main_menu():
                 exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 play()
+
+        pygame.display.update()
+        clock.tick(60)
+
 
 
 def main():
