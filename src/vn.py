@@ -104,7 +104,7 @@ def update_txtbox(txt_box, res):
     txt_box = pygame.image.load(f'img_files/ui_textbox_{res[0]}x{res[1]}.png')
     return txt_box
 
-def play(res, music, sfx):
+def play(res, music, sfx, game_res):
     screen = pygame.display.set_mode(res)
     pygame.display.set_caption('Visual Novel')
     clock = pygame.time.Clock()
@@ -112,6 +112,7 @@ def play(res, music, sfx):
     font = pygame.font.SysFont('Comic Sans MS', int(0.0225*res[0]))
     page = 1
     time = 'day'
+    res = game_res
     print(f"The current page is {page}!") #debug
 
     background = pygame.image.load(f'img_files/bg_{time}_{res[0]}x{res[1]}.png')
@@ -143,7 +144,8 @@ def play(res, music, sfx):
                     sprite = update_page(page, sprite)
                     background = update_background(background, time, res)
                 else:
-                    main_menu(res, music, sfx)
+                    res = (1040, 520)
+                    main_menu(res, music, sfx, game_res)
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_f:
                     if res == (800, 400):
@@ -162,7 +164,7 @@ def play(res, music, sfx):
         pygame.display.update()
         clock.tick(60)
 
-def main_menu(res, music, sfx):
+def main_menu(res, music, sfx, game_res):
     screen = pygame.display.set_mode(res)
     pygame.display.set_caption('Visual Novel')
     clock = pygame.time.Clock()
@@ -193,14 +195,14 @@ def main_menu(res, music, sfx):
             if event.type == pygame.MOUSEBUTTONDOWN:
                 progress = start_button.check_for_input(pygame.mouse.get_pos(), sfx)
                 if progress:
-                    play(res, music, sfx)
+                    play(res, music, sfx, game_res)
                 close = quit_button.check_for_input(pygame.mouse.get_pos(), sfx)
                 if close:
                     pygame.quit()
                     exit()
                 options = options_button.check_for_input(pygame.mouse.get_pos(), sfx)
                 if options:
-                    settings_menu(res, music, sfx)
+                    settings_menu(res, music, sfx, game_res)
                     break
                     
         
@@ -214,7 +216,7 @@ def main_menu(res, music, sfx):
         pygame.display.update()
         clock.tick(60)
 
-def settings_menu(res, music, sfx):
+def settings_menu(res, music, sfx, game_res):
     screen = pygame.display.set_mode(res)
     pygame.display.set_caption('Visual Novel')
     clock = pygame.time.Clock()
@@ -231,12 +233,19 @@ def settings_menu(res, music, sfx):
     else:
         music_button_label = "off"
 
+    if game_res == (1040, 520):
+        game_res_label = "on"
+    else:
+        game_res_label = "off"
+
     return_button_surface = pygame.image.load(
         f"img_files/ui_return_unselected_{res[0]}x{res[1]}.png")
     music_button_surface = pygame.image.load(
         f"img_files/ui_music_{music_button_label}_unselected_{res[0]}x{res[1]}.png")
     sfx_button_surface = pygame.image.load(
         f"img_files/ui_sfx_{sfx_button_label}_unselected_{res[0]}x{res[1]}.png")
+    res_button_surface = pygame.image.load(
+        f"img_files/ui_resbutton_unselected_{game_res_label}_{res[0]}x{res[1]}.png")
 
     return_button = Button(name="return", img=return_button_surface, x=(res[0]*0.5), y=(res[1]*0.8),
                             resolution=(1040,520))
@@ -244,6 +253,8 @@ def settings_menu(res, music, sfx):
                           binary = 1, on_or_off=music_button_label, resolution=(1040,520))
     sfx_button = Button(name="sfx", img=sfx_button_surface, x=(res[0]*0.7), y=(res[1]*0.43),
                         binary = 1, on_or_off=sfx_button_label, resolution=(1040,520))
+    res_button = Button(name="res", img=res_button_surface, x=(res[0]*0.7), y=(res[1]*0.55),
+                        binary = 1, on_or_off = game_res_label, resolution=(1040,520))
 
     screen.fill('black')
     bg = pygame.image.load(f"img_files/ui_settings_{res[0]}x{res[1]}.png")
@@ -258,6 +269,7 @@ def settings_menu(res, music, sfx):
                 back = return_button.check_for_input(pygame.mouse.get_pos(), sfx)
                 music_toggle = music_button.check_for_input(pygame.mouse.get_pos(), sfx)
                 sfx_toggle = sfx_button.check_for_input(pygame.mouse.get_pos(), sfx)
+                res_toggle = res_button.check_for_input(pygame.mouse.get_pos(), sfx)
                 if back:
                     main_menu(res, music, sfx)
                     break
@@ -280,14 +292,23 @@ def settings_menu(res, music, sfx):
                         sfx = 0
                     else:
                         sfx = 1
+                if res_toggle:
+                    if res_button.on_or_off == "on":
+                        res_button.on_or_off = "off"
+                        game_res = (800, 400)
+                    else:
+                        res_button.on_or_off = "on"
+                        game_res = (1040, 520)
                 
         
         return_button.update(screen)
         music_button.update(screen)
         sfx_button.update(screen)
+        res_button.update(screen)
         return_button.change_appearance(pygame.mouse.get_pos(), res)
         music_button.change_appearance(pygame.mouse.get_pos(), res)
         sfx_button.change_appearance(pygame.mouse.get_pos(), res)
+        res_button.change_appearance(pygame.mouse.get_pos(), res)
         
         pygame.display.update()
         clock.tick(60)
@@ -299,13 +320,14 @@ def main():
     res = (1040, 520)
     music = 1
     sfx = 1
+    game_res = res
 
 
         #TODO: Add unique sprites for each page
         #TODO: Add settings menu
         #TODO: Add end screen
 
-    main_menu(res, music, sfx)
+    main_menu(res, music, sfx, game_res)
 
 
 if __name__ == "__main__":
