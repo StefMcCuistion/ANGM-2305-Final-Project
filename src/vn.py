@@ -245,7 +245,7 @@ def settings_menu(res, music, sfx, game_res):
     sfx_button_surface = pygame.image.load(
         f"img_files/ui_sfx_{sfx_button_label}_unselected_{res[0]}x{res[1]}.png")
     res_button_surface = pygame.image.load(
-        f"img_files/ui_resbutton_unselected_{game_res_label}_{res[0]}x{res[1]}.png")
+        f"img_files/ui_resbutton_{game_res_label}_unselected_{res[0]}x{res[1]}.png")
 
     return_button = Button(name="return", img=return_button_surface, x=(res[0]*0.5), y=(res[1]*0.8),
                             resolution=(1040,520))
@@ -253,7 +253,7 @@ def settings_menu(res, music, sfx, game_res):
                           binary = 1, on_or_off=music_button_label, resolution=(1040,520))
     sfx_button = Button(name="sfx", img=sfx_button_surface, x=(res[0]*0.7), y=(res[1]*0.43),
                         binary = 1, on_or_off=sfx_button_label, resolution=(1040,520))
-    res_button = Button(name="res", img=res_button_surface, x=(res[0]*0.7), y=(res[1]*0.55),
+    res_button = Button(name="resbutton", img=res_button_surface, x=(res[0]*0.7), y=(res[1]*0.55),
                         binary = 1, on_or_off = game_res_label, resolution=(1040,520))
 
     screen.fill('black')
