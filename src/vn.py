@@ -191,11 +191,9 @@ def settings_menu(res):
     pygame.display.set_caption('Visual Novel')
     clock = pygame.time.Clock()
 
-    start_button_surface = pygame.image.load(f"img_files/ui_start_unselected_{res[0]}x{res[1]}.png")
-    quit_button_surface = pygame.image.load(f"img_files/ui_quit_unselected_{res[0]}x{res[1]}.png")
+    return_button_surface = pygame.image.load(f"img_files/ui_return_unselected_{res[0]}x{res[1]}.png")
 
-    start_button = Button(name="start", img=start_button_surface, x=(res[0]*0.5), y=(res[1]*0.5), resolution=(1040,820))
-    quit_button = Button(name="quit", img=quit_button_surface, x=(res[0]*0.5), y=(res[1]*0.7), resolution=(1040,820))
+    return_button = Button(name="start", img=return_button_surface, x=(res[0]*0.5), y=(res[1]*0.5), resolution=(1040,820))
 
     screen.fill('black')
     bg = pygame.image.load(f"img_files/ui_settings_{res[0]}x{res[1]}.png")
@@ -207,18 +205,12 @@ def settings_menu(res):
                 pygame.quit()
                 exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
-                progress = start_button.check_for_input(pygame.mouse.get_pos())
+                progress = return_button.check_for_input(pygame.mouse.get_pos())
                 if progress:
                     play(res)
-                close = quit_button.check_for_input(pygame.mouse.get_pos())
-                if close:
-                    pygame.quit()
-                    exit()
         
-        start_button.update(screen)
-        quit_button.update(screen)
-        start_button.change_appearance(pygame.mouse.get_pos(), res)
-        quit_button.change_appearance(pygame.mouse.get_pos(), res)
+        return_button.update(screen)
+        return_button.change_appearance(pygame.mouse.get_pos(), res)
         
         pygame.display.update()
         clock.tick(60)
