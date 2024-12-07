@@ -240,10 +240,8 @@ def main():
     res = (1040, 520)
 
 
-        #TODO: Add main menu
         #TODO: Add unique sprites for each page
         #TODO: Add settings menu
-        #TODO: Add audio
         #TODO: Add end screen
 
     main_menu(res)
