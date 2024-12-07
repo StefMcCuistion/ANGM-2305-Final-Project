@@ -188,9 +188,6 @@ def main_menu(res, music, sfx, game_res):
     bg_img = pygame.image.load(f"img_files/ui_main_menu_{res[0]}x{res[1]}.png")
     screen.blit(bg_img, (0,0))
 
-    mixer.music.load("audio_files/music_menu.mp3")
-    mixer.music.play(-1)
-
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -284,8 +281,10 @@ def settings_menu(res, music, sfx, game_res):
                         music_button.on_or_off = "on"
                     if music == 1:
                         music = 0
+                        mixer.music.stop()
                     else:
                         music = 1
+                        mixer.music.play()
                 if sfx_toggle:
                     if sfx_button.on_or_off == "on":
                         sfx_button.on_or_off = "off"
@@ -326,10 +325,8 @@ def main():
     sfx = 1
     game_res = res
 
-
-        #TODO: Add unique sprites for each page
-        #TODO: Add settings menu
-        #TODO: Add end screen
+    mixer.music.load("audio_files/music_menu.mp3")
+    mixer.music.play(-1)
 
     main_menu(res, music, sfx, game_res)
 
