@@ -219,9 +219,23 @@ def settings_menu(res, music, sfx):
                 exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 back = return_button.check_for_input(pygame.mouse.get_pos())
+                music_toggle = music_button.check_for_input(pygame.mouse.get_pos())
+                sfx_toggle = sfx_button.check_for_input(pygame.mouse.get_pos())
                 if back:
                     main_menu(res, music, sfx)
                     break
+                if music_toggle:
+                    if music_button.on_or_off == "on":
+                        music_button.on_or_off = "off"
+                    else:
+                        music_button.on_or_off = "on"
+                    if music == 1:
+                        music = 0
+                        print(f"music={music}") #debug
+                    else:
+                        music = 1
+                        print(f"music={music}") #debug
+                
         
         return_button.update(screen)
         music_button.update(screen)
