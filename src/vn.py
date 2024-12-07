@@ -142,6 +142,8 @@ def play(res, music, sfx):
                     page += 1
                     sprite = update_page(page, sprite)
                     background = update_background(background, time, res)
+                else:
+                    main_menu(res, music, sfx)
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_f:
                     if res == (800, 400):
