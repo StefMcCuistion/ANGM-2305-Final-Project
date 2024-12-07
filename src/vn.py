@@ -205,9 +205,9 @@ def settings_menu(res):
                 pygame.quit()
                 exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
-                progress = return_button.check_for_input(pygame.mouse.get_pos())
-                if progress:
-                    play(res)
+                back = return_button.check_for_input(pygame.mouse.get_pos())
+                if back:
+                    main_menu(res)
         
         return_button.update(screen)
         return_button.change_appearance(pygame.mouse.get_pos(), res)
