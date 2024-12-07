@@ -178,7 +178,7 @@ def main_menu():
         pygame.display.update()
         clock.tick(60)
 
-def settings_menu()
+def settings_menu():
     res = (1040, 520)
     screen = pygame.display.set_mode(res)
     pygame.display.set_caption('Visual Novel')
@@ -190,6 +190,7 @@ def settings_menu()
     start_button = Button(name="start", img=start_button_surface, x=(res[0]*0.5), y=(res[1]*0.5), resolution=(1040,820))
     quit_button = Button(name="quit", img=quit_button_surface, x=(res[0]*0.5), y=(res[1]*0.7), resolution=(1040,820))
 
+    screen.fill('black')
     bg = pygame.image.load(f"img_files/ui_main_menu_{res[0]}x{res[1]}.png")
     screen.blit(bg, (0,0))
 
