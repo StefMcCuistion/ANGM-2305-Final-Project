@@ -23,12 +23,13 @@ class Sprite():
         screen.blit(surf, (0,0))
 
 class Button():
-    def __init__(self, name, img, x, y, resolution = (1040, 820)):
+    def __init__(self, name, img, x, y, resolution = (1040, 520), on):
         self.name = name
         self.img = img
         self.x = x
         self.y = y
         self.res = resolution
+        self.on = on
         self.rect = self.img.get_rect(center=(self.x, self.y))
 
     def update(self, screen):
