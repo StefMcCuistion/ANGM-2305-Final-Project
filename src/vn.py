@@ -32,11 +32,14 @@ class Button():
         self.on_or_off = on_or_off
         self.res = resolution
         self.rect = self.img.get_rect(center=(self.x, self.y))
+        self.button_sound = pygame.mixer.Sound("audio_files/sfx_button.mp3")
 
     def update(self, screen):
         screen.blit(self.img, self.rect)
 
-    def check_for_input(self, pos):
+    def check_for_input(self, pos, sfx):
+        if sfx:
+            self.button_sound.play()
         if pos[0] in range(self.rect.left, self.rect.right) and pos[1] in range(self.rect.top, self.rect.bottom):
             return 1
         else:
@@ -172,14 +175,14 @@ def main_menu(res, music, sfx):
                 pygame.quit()
                 exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
-                progress = start_button.check_for_input(pygame.mouse.get_pos())
+                progress = start_button.check_for_input(pygame.mouse.get_pos(), sfx)
                 if progress:
                     play(res, music, sfx)
-                close = quit_button.check_for_input(pygame.mouse.get_pos())
+                close = quit_button.check_for_input(pygame.mouse.get_pos(), sfx)
                 if close:
                     pygame.quit()
                     exit()
-                options = options_button.check_for_input(pygame.mouse.get_pos())
+                options = options_button.check_for_input(pygame.mouse.get_pos(), sfx)
                 if options:
                     settings_menu(res, music, sfx)
                     break
@@ -220,9 +223,9 @@ def settings_menu(res, music, sfx):
                 pygame.quit()
                 exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
-                back = return_button.check_for_input(pygame.mouse.get_pos())
-                music_toggle = music_button.check_for_input(pygame.mouse.get_pos())
-                sfx_toggle = sfx_button.check_for_input(pygame.mouse.get_pos())
+                back = return_button.check_for_input(pygame.mouse.get_pos(), sfx)
+                music_toggle = music_button.check_for_input(pygame.mouse.get_pos(), sfx)
+                sfx_toggle = sfx_button.check_for_input(pygame.mouse.get_pos(), sfx)
                 if back:
                     main_menu(res, music, sfx)
                     break
