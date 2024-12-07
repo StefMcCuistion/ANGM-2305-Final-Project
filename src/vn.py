@@ -200,7 +200,7 @@ def settings_menu(res, music, sfx):
     pygame.display.set_caption('Visual Novel')
     clock = pygame.time.Clock()
 
-    button_sfx = pygame.mixer.Sound("audio_files/sfx_button.mp3")
+    button_sound = pygame.mixer.Sound("audio_files/sfx_button.mp3")
 
     return_button_surface = pygame.image.load(f"img_files/ui_return_unselected_{res[0]}x{res[1]}.png")
     music_button_surface = pygame.image.load(f"img_files/ui_music_on_unselected_{res[0]}x{res[1]}.png")
@@ -228,9 +228,12 @@ def settings_menu(res, music, sfx):
                     break
                 if music_toggle:
                     if music_button.on_or_off == "on":
+                        button_sound.play()
                         music_button.on_or_off = "off"
                     else:
                         music_button.on_or_off = "on"
+                    if sfx:
+                        button_sound.play()
                     if music == 1:
                         music = 0
                     else:
