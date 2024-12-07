@@ -95,7 +95,7 @@ def play(res):
     sprite = Sprite(name="altchara")
     font = pygame.font.SysFont('Comic Sans MS', int(0.0225*res[0]))
     page = 1
-    time = 'night'
+    time = 'day'
     print(f"The current page is {page}!") #debug
 
     background = pygame.image.load(f'img_files/bg_{time}_{res[0]}x{res[1]}.png')
@@ -150,9 +150,11 @@ def main_menu():
     start_button_surface = pygame.image.load(f"img_files/ui_start_unselected_{res[0]}x{res[1]}.png")
     quit_button_surface = pygame.image.load(f"img_files/ui_quit_unselected_{res[0]}x{res[1]}.png")
 
-    start_button = Button(name="start", img=start_button_surface, x=(res[0]*0.5), y=(res[1]*0.4), resolution=(1040,820))
+    start_button = Button(name="start", img=start_button_surface, x=(res[0]*0.5), y=(res[1]*0.5), resolution=(1040,820))
     quit_button = Button(name="quit", img=quit_button_surface, x=(res[0]*0.5), y=(res[1]*0.7), resolution=(1040,820))
 
+    bg = pygame.image.load(f"img_files/ui_main_menu_{res[0]}x{res[1]}.png")
+    screen.blit(bg, (0,0))
 
     while True:
         for event in pygame.event.get():
@@ -176,7 +178,42 @@ def main_menu():
         pygame.display.update()
         clock.tick(60)
 
+def settings_menu()
+    res = (1040, 520)
+    screen = pygame.display.set_mode(res)
+    pygame.display.set_caption('Visual Novel')
+    clock = pygame.time.Clock()
 
+    start_button_surface = pygame.image.load(f"img_files/ui_start_unselected_{res[0]}x{res[1]}.png")
+    quit_button_surface = pygame.image.load(f"img_files/ui_quit_unselected_{res[0]}x{res[1]}.png")
+
+    start_button = Button(name="start", img=start_button_surface, x=(res[0]*0.5), y=(res[1]*0.5), resolution=(1040,820))
+    quit_button = Button(name="quit", img=quit_button_surface, x=(res[0]*0.5), y=(res[1]*0.7), resolution=(1040,820))
+
+    bg = pygame.image.load(f"img_files/ui_main_menu_{res[0]}x{res[1]}.png")
+    screen.blit(bg, (0,0))
+
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                exit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                progress = start_button.check_for_input(pygame.mouse.get_pos())
+                if progress:
+                    play(res)
+                close = quit_button.check_for_input(pygame.mouse.get_pos())
+                if close:
+                    pygame.quit()
+                    exit()
+        
+        start_button.update(screen)
+        quit_button.update(screen)
+        start_button.change_appearance(pygame.mouse.get_pos(), res)
+        quit_button.change_appearance(pygame.mouse.get_pos(), res)
+        
+        pygame.display.update()
+        clock.tick(60)
 
 def main():
     # Initialization and setup. 
