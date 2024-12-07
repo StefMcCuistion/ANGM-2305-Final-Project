@@ -205,9 +205,19 @@ def settings_menu(res, music, sfx):
 
     button_sound = pygame.mixer.Sound("audio_files/sfx_button.mp3")
 
+    if sfx:
+        sfx_button_label = "on"
+    else:
+        sfx_button_label = "off"
+
+    if music:
+        music_button_label = "on"
+    else:
+        music_button_label = "off"
+
     return_button_surface = pygame.image.load(f"img_files/ui_return_unselected_{res[0]}x{res[1]}.png")
-    music_button_surface = pygame.image.load(f"img_files/ui_music_on_unselected_{res[0]}x{res[1]}.png")
-    sfx_button_surface = pygame.image.load(f"img_files/ui_sfx_on_unselected_{res[0]}x{res[1]}.png")
+    music_button_surface = pygame.image.load(f"img_files/ui_music_{music_button_label}_unselected_{res[0]}x{res[1]}.png")
+    sfx_button_surface = pygame.image.load(f"img_files/ui_sfx_{sfx_button_label}_unselected_{res[0]}x{res[1]}.png")
 
     return_button = Button(name="return", img=return_button_surface, x=(res[0]*0.5), y=(res[1]*0.8), resolution=(1040,520))
     music_button = Button(name="music", img=music_button_surface, x=(res[0]*0.7), y=(res[1]*0.28), binary = 1, resolution=(1040,520))
