@@ -90,7 +90,6 @@ def display_dialogue(screen, txt, font, res):
     screen.blit(line5, (0.0375*res[0], 0.9*res[1]))
 
 def update_page(page, sprite):
-    print(f"The current page is {page}!") #debug
     if sprite.dir==1:
         sprite = Sprite(dir=0)
     else:
@@ -114,7 +113,6 @@ def play(res, music, sfx, game_res):
     page = 1
     time = 'day'
     res = game_res
-    print(f"The current page is {page}!") #debug
 
     background = pygame.image.load(f'img_files/bg_{time}_{res[0]}x{res[1]}.png')
     txt_box = pygame.image.load(f'img_files/ui_textbox_{res[0]}x{res[1]}.png')
