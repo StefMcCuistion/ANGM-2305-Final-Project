@@ -1,4 +1,5 @@
 import pygame
+from pygame import mixer
 from sys import exit
 
 class Sprite():
@@ -105,7 +106,7 @@ def update_txtbox(txt_box, res):
     return txt_box
 
 def play(res, music, sfx, game_res):
-    screen = pygame.display.set_mode(res)
+    screen = pygame.display.set_mode(game_res)
     pygame.display.set_caption('Visual Novel')
     clock = pygame.time.Clock()
     sprite = Sprite(name="altchara")
@@ -184,8 +185,11 @@ def main_menu(res, music, sfx, game_res):
                           x=(res[0]*0.5), y=(res[1]*0.8), resolution=(1040,520))
 
     screen.fill('black')
-    bg = pygame.image.load(f"img_files/ui_main_menu_{res[0]}x{res[1]}.png")
-    screen.blit(bg, (0,0))
+    bg_img = pygame.image.load(f"img_files/ui_main_menu_{res[0]}x{res[1]}.png")
+    screen.blit(bg_img, (0,0))
+
+    mixer.music.load("audio_files/music_menu.mp3")
+    mixer.music.play(-1)
 
     while True:
         for event in pygame.event.get():
