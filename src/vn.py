@@ -243,6 +243,7 @@ def settings_menu(res, music, sfx):
                         sfx_button.on_or_off = "off"
                     else:
                         sfx_button.on_or_off = "on"
+                        button_sound.play()
                     if sfx == 1:
                         sfx = 0
                     else:
