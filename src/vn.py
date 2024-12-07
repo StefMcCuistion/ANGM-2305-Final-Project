@@ -38,7 +38,7 @@ class Button():
         screen.blit(self.img, self.rect)
 
     def check_for_input(self, pos, sfx):
-        if sfx:
+        if sfx == 1:
             self.button_sound.play()
         if pos[0] in range(self.rect.left, self.rect.right) and pos[1] in range(self.rect.top, self.rect.bottom):
             return 1
@@ -231,12 +231,9 @@ def settings_menu(res, music, sfx):
                     break
                 if music_toggle:
                     if music_button.on_or_off == "on":
-                        button_sound.play()
                         music_button.on_or_off = "off"
                     else:
                         music_button.on_or_off = "on"
-                    if sfx:
-                        button_sound.play()
                     if music == 1:
                         music = 0
                     else:
