@@ -141,8 +141,7 @@ def play(res):
         pygame.display.update()
         clock.tick(60)
 
-def main_menu():
-    res = (1040, 520)
+def main_menu(res):
     screen = pygame.display.set_mode(res)
     pygame.display.set_caption('Visual Novel')
     clock = pygame.time.Clock()
@@ -226,6 +225,8 @@ def main():
     # Initialization and setup. 
     pygame.init()
     pygame.font.init()
+    res = (1040, 520)
+
 
         #TODO: Add main menu
         #TODO: Add unique sprites for each page
@@ -233,7 +234,7 @@ def main():
         #TODO: Add audio
         #TODO: Add end screen
 
-    main_menu()
+    main_menu(res)
 
 
 if __name__ == "__main__":
