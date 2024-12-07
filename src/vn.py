@@ -174,6 +174,7 @@ def main_menu(res):
                 options = options_button.check_for_input(pygame.mouse.get_pos())
                 if options:
                     settings_menu(res)
+                    break
                     
         
         start_button.update(screen)
@@ -208,6 +209,7 @@ def settings_menu(res):
                 back = return_button.check_for_input(pygame.mouse.get_pos())
                 if back:
                     main_menu(res)
+                    break
         
         return_button.update(screen)
         return_button.change_appearance(pygame.mouse.get_pos(), res)
