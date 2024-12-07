@@ -39,9 +39,9 @@ class Button():
         screen.blit(self.img, self.rect)
 
     def check_for_input(self, pos, sfx):
-        if sfx == 1:
-            self.button_sound.play()
         if pos[0] in range(self.rect.left, self.rect.right) and pos[1] in range(self.rect.top, self.rect.bottom):
+            if sfx == 1:
+                    self.button_sound.play()
             return 1
         else:
             return 0
