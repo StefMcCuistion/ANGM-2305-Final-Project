@@ -116,6 +116,7 @@ def play(res, music, sfx):
 
     background = pygame.image.load(f'img_files/bg_{time}_{res[0]}x{res[1]}.png')
     txt_box = pygame.image.load(f'img_files/ui_textbox_{res[0]}x{res[1]}.png')
+    pageturn_sfx = pygame.mixer.Sound("audio_files/sfx_pageturn.mp3")
 
 
     with open('dialogue.csv') as file:
@@ -136,6 +137,8 @@ def play(res, music, sfx):
             if event.type == pygame.MOUSEBUTTONDOWN:
                 pagecount = len(dialogue_pages)
                 if page < pagecount:
+                    if sfx:
+                        pageturn_sfx.play()
                     page += 1
                     sprite = update_page(page, sprite)
                     background = update_background(background, time, res)
