@@ -155,6 +155,7 @@ def main_menu():
     options_button = Button(name="options", img=options_button_surface, x=(res[0]*0.5), y=(res[1]*0.6), resolution=(1040,520))
     quit_button = Button(name="quit", img=quit_button_surface, x=(res[0]*0.5), y=(res[1]*0.8), resolution=(1040,520))
 
+    screen.fill('black')
     bg = pygame.image.load(f"img_files/ui_main_menu_{res[0]}x{res[1]}.png")
     screen.blit(bg, (0,0))
 
@@ -198,8 +199,6 @@ def settings_menu(res):
     quit_button = Button(name="quit", img=quit_button_surface, x=(res[0]*0.5), y=(res[1]*0.7), resolution=(1040,820))
 
     screen.fill('black')
-    bg = pygame.image.load(f"img_files/ui_main_menu_{res[0]}x{res[1]}.png")
-    screen.blit(bg, (0,0))
 
     while True:
         for event in pygame.event.get():
