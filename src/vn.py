@@ -253,7 +253,7 @@ def settings_menu(res, music, sfx, game_res):
                           binary = 1, on_or_off=music_button_label, resolution=(1040,520))
     sfx_button = Button(name="sfx", img=sfx_button_surface, x=(res[0]*0.7), y=(res[1]*0.43),
                         binary = 1, on_or_off=sfx_button_label, resolution=(1040,520))
-    res_button = Button(name="resbutton", img=res_button_surface, x=(res[0]*0.7), y=(res[1]*0.55),
+    res_button = Button(name="resbutton", img=res_button_surface, x=(res[0]*0.8), y=(res[1]*0.57),
                         binary = 1, on_or_off = game_res_label, resolution=(1040,520))
 
     screen.fill('black')
@@ -271,7 +271,7 @@ def settings_menu(res, music, sfx, game_res):
                 sfx_toggle = sfx_button.check_for_input(pygame.mouse.get_pos(), sfx)
                 res_toggle = res_button.check_for_input(pygame.mouse.get_pos(), sfx)
                 if back:
-                    main_menu(res, music, sfx)
+                    main_menu(res, music, sfx, game_res)
                     break
                 if music_toggle:
                     if music_button.on_or_off == "on":
