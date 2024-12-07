@@ -231,10 +231,17 @@ def settings_menu(res, music, sfx):
                         music_button.on_or_off = "on"
                     if music == 1:
                         music = 0
-                        print(f"music={music}") #debug
                     else:
                         music = 1
-                        print(f"music={music}") #debug
+                if sfx_toggle:
+                    if sfx_button.on_or_off == "on":
+                        sfx_button.on_or_off = "off"
+                    else:
+                        sfx_button.on_or_off = "on"
+                    if sfx == 1:
+                        sfx = 0
+                    else:
+                        sfx = 1
                 
         
         return_button.update(screen)
