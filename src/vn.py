@@ -177,8 +177,10 @@ def main_menu():
                     
         
         start_button.update(screen)
+        options_button.update(screen)
         quit_button.update(screen)
         start_button.change_appearance(pygame.mouse.get_pos(), res)
+        options_button.change_appearance(pygame.mouse.get_pos(), res)
         quit_button.change_appearance(pygame.mouse.get_pos(), res)
         
         pygame.display.update()
