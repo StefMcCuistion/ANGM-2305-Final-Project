@@ -148,10 +148,12 @@ def main_menu():
     clock = pygame.time.Clock()
 
     start_button_surface = pygame.image.load(f"img_files/ui_start_unselected_{res[0]}x{res[1]}.png")
+    options_button_surface = pygame.image.load(f"img_files/ui_options_unselected_{res[0]}x{res[1]}.png")
     quit_button_surface = pygame.image.load(f"img_files/ui_quit_unselected_{res[0]}x{res[1]}.png")
 
-    start_button = Button(name="start", img=start_button_surface, x=(res[0]*0.5), y=(res[1]*0.5), resolution=(1040,820))
-    quit_button = Button(name="quit", img=quit_button_surface, x=(res[0]*0.5), y=(res[1]*0.7), resolution=(1040,820))
+    start_button = Button(name="start", img=start_button_surface, x=(res[0]*0.5), y=(res[1]*0.45), resolution=(1040,820))
+    options_button = Button(name="options", img=options_button_surface, x=(res[0]*0.5), y=(res[1]*0.6), resolution=(1040,820))
+    quit_button = Button(name="quit", img=quit_button_surface, x=(res[0]*0.5), y=(res[1]*0.8), resolution=(1040,820))
 
     bg = pygame.image.load(f"img_files/ui_main_menu_{res[0]}x{res[1]}.png")
     screen.blit(bg, (0,0))
@@ -169,6 +171,10 @@ def main_menu():
                 if close:
                     pygame.quit()
                     exit()
+                options = options_button.check_for_input(pygame.mouse.get_pos())
+                if options:
+                    settings_menu()
+                    break
         
         start_button.update(screen)
         quit_button.update(screen)
