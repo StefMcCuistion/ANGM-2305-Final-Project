@@ -96,7 +96,7 @@ def update_txtbox(txt_box, res):
     txt_box = pygame.image.load(f'img_files/ui_textbox_{res[0]}x{res[1]}.png')
     return txt_box
 
-def play(res):
+def play(res, music, sfx):
     screen = pygame.display.set_mode(res)
     pygame.display.set_caption('Visual Novel')
     clock = pygame.time.Clock()
@@ -149,7 +149,7 @@ def play(res):
         pygame.display.update()
         clock.tick(60)
 
-def main_menu(res):
+def main_menu(res, music, sfx):
     screen = pygame.display.set_mode(res)
     pygame.display.set_caption('Visual Novel')
     clock = pygame.time.Clock()
@@ -174,14 +174,14 @@ def main_menu(res):
             if event.type == pygame.MOUSEBUTTONDOWN:
                 progress = start_button.check_for_input(pygame.mouse.get_pos())
                 if progress:
-                    play(res)
+                    play(res, music, sfx)
                 close = quit_button.check_for_input(pygame.mouse.get_pos())
                 if close:
                     pygame.quit()
                     exit()
                 options = options_button.check_for_input(pygame.mouse.get_pos())
                 if options:
-                    settings_menu(res)
+                    settings_menu(res, music, sfx)
                     break
                     
         
@@ -195,7 +195,7 @@ def main_menu(res):
         pygame.display.update()
         clock.tick(60)
 
-def settings_menu(res):
+def settings_menu(res, music, sfx):
     screen = pygame.display.set_mode(res)
     pygame.display.set_caption('Visual Novel')
     clock = pygame.time.Clock()
@@ -220,7 +220,7 @@ def settings_menu(res):
             if event.type == pygame.MOUSEBUTTONDOWN:
                 back = return_button.check_for_input(pygame.mouse.get_pos())
                 if back:
-                    main_menu(res)
+                    main_menu(res, music, sfx)
                     break
         
         return_button.update(screen)
@@ -238,13 +238,15 @@ def main():
     pygame.init()
     pygame.font.init()
     res = (1040, 520)
+    music = 1
+    sfx = 1
 
 
         #TODO: Add unique sprites for each page
         #TODO: Add settings menu
         #TODO: Add end screen
 
-    main_menu(res)
+    main_menu(res, music, sfx)
 
 
 if __name__ == "__main__":
