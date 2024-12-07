@@ -23,13 +23,14 @@ class Sprite():
         screen.blit(surf, (0,0))
 
 class Button():
-    def __init__(self, name, img, x, y, resolution = (1040, 520), on):
+    def __init__(self, name, img, x, y, binary = 0, on_or_off = "on", resolution = (1040, 520)):
         self.name = name
         self.img = img
         self.x = x
         self.y = y
+        self.binary = binary
+        self.on_or_off = on_or_off
         self.res = resolution
-        self.on = on
         self.rect = self.img.get_rect(center=(self.x, self.y))
 
     def update(self, screen):
@@ -43,7 +44,10 @@ class Button():
 
     def change_appearance(self, pos, res):
         if pos[0] in range(self.rect.left, self.rect.right) and pos[1] in range(self.rect.top, self.rect.bottom):
-            self.img = pygame.image.load(f"img_files/ui_{self.name}_selected_{res[0]}x{res[1]}.png")
+            if self.binary:
+                self.img = pygame.image.load(f"img_files/ui_{self.name}_{self.on_or_off}_selected_{res[0]}x{res[1]}.png")
+            else:
+                self.img = pygame.image.load(f"img_files/ui_{self.name}_selected_{res[0]}x{res[1]}.png")
         else:
             self.img = pygame.image.load(f"img_files/ui_{self.name}_unselected_{res[0]}x{res[1]}.png")
 
@@ -194,12 +198,12 @@ def settings_menu(res):
     clock = pygame.time.Clock()
 
     return_button_surface = pygame.image.load(f"img_files/ui_return_unselected_{res[0]}x{res[1]}.png")
-    on_button_surface = pygame.image.load(f"img_files/ui_on_unselected_{res[0]}x{res[1]}.png")
-    off_button_surface = pygame.image.load(f"img_files/ui_off_unselected_{res[0]}x{res[1]}.png")
+    music_button_surface = pygame.image.load(f"img_files/ui_music_on_unselected_{res[0]}x{res[1]}.png")
+    sfx_button_surface = pygame.image.load(f"img_files/ui_sfx_on_unselected_{res[0]}x{res[1]}.png")
 
     return_button = Button(name="return", img=return_button_surface, x=(res[0]*0.5), y=(res[1]*0.8), resolution=(1040,820))
-    music_button = Button(name="music", img=return_button_surface, x=(res[0]*0.5), y=(res[1]*0.8), resolution=(1040,820))
-    sfx_button = Button(name="sfx", img=return_button_surface, x=(res[0]*0.5), y=(res[1]*0.8), resolution=(1040,820))
+    music_button = Button(name="music", img=music_button_surface, x=(res[0]*0.5), y=(res[1]*0.8), resolution=(1040,820))
+    sfx_button = Button(name="sfx", img=sfx_button_surface, x=(res[0]*0.5), y=(res[1]*0.8), resolution=(1040,820))
 
     screen.fill('black')
     bg = pygame.image.load(f"img_files/ui_settings_{res[0]}x{res[1]}.png")
